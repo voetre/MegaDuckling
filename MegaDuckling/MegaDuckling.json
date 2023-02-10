@@ -1,0 +1,13 @@
+{
+  "Author": "voetre",
+  "Name": "Mega Duckling",
+  "Punchline": "Call him ugly one more time... I dare you...",
+  "Description": "A description that shows up in /xlplugins. List any major slash-command(s).",
+  "InternalName": "MegaDuckling",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "Ugly",
+    "Duckling",
+    "Ugly Duckling"
+  ]
+}
