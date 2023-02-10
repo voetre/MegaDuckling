@@ -1,5 +1,4 @@
 using System;
-using System.Numerics;
 using Dalamud.Interface.Windowing;
 using ImGuiNET;
 
@@ -22,11 +21,29 @@ public class ConfigWindow : Window, IDisposable
     {
         var ModelIDValue = this.Configuration.ModelID;
         var ModelScaleValue = this.Configuration.ModelScale;
+        var ZoneChangeWaitTimeInSeconds = this.Configuration.ZoneChangeWaitTimeInSeconds;
+        var LoginWaitTimeInSeconds = this.Configuration.LoginWaitTimeInSeconds;
 
         ImGui.Text("Model ID to enlarge:");
         if (ImGui.InputInt("##Object Model ID", ref ModelIDValue, 0))
         {
             this.Configuration.ModelID = ModelIDValue;
+            this.Configuration.Save();
+        }
+        ImGui.Spacing();
+
+        ImGui.Text("Zone Change Delay:");
+        if (ImGui.InputFloat("##ZoneDelayValue", ref ZoneChangeWaitTimeInSeconds))
+        {
+            this.Configuration.ZoneChangeWaitTimeInSeconds = ZoneChangeWaitTimeInSeconds;
+            this.Configuration.Save();
+        }
+        ImGui.Spacing();
+
+        ImGui.Text("Login Delay:");
+        if (ImGui.InputFloat("##LoginDelayValue", ref LoginWaitTimeInSeconds))
+        {
+            this.Configuration.LoginWaitTimeInSeconds = LoginWaitTimeInSeconds;
             this.Configuration.Save();
         }
         ImGui.Spacing();

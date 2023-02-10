@@ -7,6 +7,7 @@ using Dalamud.Game.ClientState.Objects.SubKinds;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using System;
+using System.Runtime.CompilerServices;
 
 namespace MegaDuckling
 {
@@ -44,11 +45,16 @@ namespace MegaDuckling
             DalamudApi.ClientState.Login += LoginEventHandler;
             this.PluginInterface.UiBuilder.Draw += DrawUI;
             this.PluginInterface.UiBuilder.OpenConfigUi += DrawConfigUI;
+            DuckyEnlarger(null, 0);
         }
 
-        private static void LoginEventHandler(object sender, EventArgs args)
+        private void LoginEventHandler(object sender, EventArgs args)
         {
-            Plugin.DuckyEnlarger(null, 0);
+            DalamudApi.Framework.RunOnTick(() =>
+            {
+                Plugin.DuckyEnlarger(null, 0);
+            },
+            TimeSpan.FromSeconds(this.Configuration.LoginWaitTimeInSeconds));
         }
 
         public unsafe void DuckyEnlarger(object sender, ushort e)
@@ -73,7 +79,7 @@ namespace MegaDuckling
                     }
                 }
             }
-            , TimeSpan.FromSeconds(2));
+            , TimeSpan.FromSeconds(this.Configuration.ZoneChangeWaitTimeInSeconds));
         }
 
         public void Dispose()

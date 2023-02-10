@@ -11,6 +11,8 @@ namespace MegaDuckling
 
         public int ModelID = 899;
         public float ModelScale = 5f;
+        public float ZoneChangeWaitTimeInSeconds = 2f;
+        public float LoginWaitTimeInSeconds = 4f;
 
         // the below exist just to make saving less cumbersome
         [NonSerialized]
