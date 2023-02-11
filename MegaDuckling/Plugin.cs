@@ -7,7 +7,6 @@ using Dalamud.Game.ClientState.Objects.SubKinds;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using System;
-using System.Runtime.CompilerServices;
 
 namespace MegaDuckling
 {
@@ -67,9 +66,9 @@ namespace MegaDuckling
                     var d = (Character*)o.Address;
                     if (d->ModelCharaId == this.Configuration.ModelID)
                     {
-                        obj->RenderFlags = 2;
                         obj->Scale = this.Configuration.ModelScale;
                         d->ModelScale = this.Configuration.ModelScale;
+                        obj->RenderFlags = 2;
                         if (Dalamud.SafeMemory.ReadString(o.Address + 48) == "Ugly Duckling")
                         {
                             Dalamud.SafeMemory.WriteString(o.Address + 48, "Mega Duckling");

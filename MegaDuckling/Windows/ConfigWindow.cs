@@ -56,7 +56,7 @@ public class ConfigWindow : Window, IDisposable
                 this.Configuration.ModelScale = ModelScaleValue;
                 this.Configuration.Save();
             }
-            else if (ModelScaleValue <= 0)
+            else if (ModelScaleValue < 0.1)
             {
                 this.Configuration.ModelScale = 0.1f;
                 this.Configuration.Save();
